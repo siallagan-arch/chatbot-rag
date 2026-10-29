@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chatbot Akademik Demo</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f5fa;
+      margin: 0;
+      padding: 24px;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 40px auto;
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 8px 30px #00000012;
+    }
+
+    h2 { margin-top: 0; color: #253b80; }
+    .subtitle { color: #64748b; }
+
+    #messages {
+      height: 360px;
+      overflow-y: auto;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 16px;
+      margin: 20px 0;
+    }
+
+    .message {
+      padding: 12px;
+      border-radius: 12px;
+      margin-bottom: 12px;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      line-height: 1.5;
+    }
+
+    .user { background: #dbeafe; margin-left: 15%; }
+    .bot { background: #f1f5f9; margin-right: 15%; }
+
+    form { display: flex; gap: 8px; }
+
+    input {
+      flex: 1;
+      min-width: 0;
+      padding: 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+    }
+
+    button {
+      padding: 12px 18px;
+      background: #2563eb;
+      color: white;
+      border: 0;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:disabled { opacity: 0.6; cursor: wait; }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <h2>Chatbot Akademik Demo</h2>
+    <p class="subtitle">Asisten informasi layanan akademik berbasis RAG</p>
+
+    <div id="messages" role="log" aria-live="polite">
+      <div class="message bot">
+        Halo! Silakan tanyakan informasi layanan akademik.
+      </div>
+    </div>
+
+    <form id="chatForm">
+      <input id="question" type="text"
+             placeholder="Tulis pertanyaan..." required>
+      <button id="sendButton" type="submit">Kirim</button>
+    </form>
+  </main>
+
+  <script>
+    const form = document.getElementById("chatForm");
+    const input = document.getElementById("question");
+    const messages = document.getElementById("messages");
+    const button = document.getElementById("sendButton");
+
+    function addMessage(text, type) {
+      const element = document.createElement("div");
+      element.className = "message " + type;
+      element.textContent = text;
+      messages.appendChild(element);
+      messages.scrollTop = messages.scrollHeight;
+      return element;
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const question = input.value.trim();
+      if (!question) return;
+
+      addMessage(question, "user");
+      input.value = "";
+      button.disabled = true;
+
+      const loading = addMessage("Sedang mencari jawaban...", "bot");
+
+      try {
+        const response = await fetch("/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ question })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || "Terjadi kesalahan");
+        }
+
+        loading.textContent = data.answer || "Tidak ada jawaban.";
+      } catch (error) {
+        loading.textContent = "Gagal: " + error.message;
+      } finally {
+        button.disabled = false;
+        input.focus();
+      }
+    });
+  </script>
+</body>
+</html>

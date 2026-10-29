@@ -1,0 +1,10 @@
+
+services:
+  chatbot-rag:
+    build: .
+    container_name: chatbot-rag
+    ports:
+      - "127.0.0.1:5000:5000"
+    env_file:
+      - .env
+    restart: unless-stopped

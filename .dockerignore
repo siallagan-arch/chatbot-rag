@@ -1,0 +1,17 @@
+
+.venv/
+.vscode/
+.env
+.env.*
+!.env.example
+.git/
+.gitignore
+__pycache__/
+*.pyc
+.DS_Store
+docs/
+00_test_gemini.py
+01_chunking.py
+02_build_index.py
+03_retrieval.py
+04_rag_chat.py

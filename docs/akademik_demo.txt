@@ -1,0 +1,43 @@
+
+DOKUMEN LAYANAN AKADEMIK DEMO
+
+1. SURAT KETERANGAN AKTIF KULIAH
+
+Mahasiswa dapat mengajukan surat keterangan aktif kuliah melalui bagian administrasi akademik.
+
+Persyaratan:
+- Mahasiswa berstatus aktif.
+- Mengisi formulir permohonan.
+- Menyertakan identitas mahasiswa.
+
+Waktu pemrosesan surat aktif kuliah adalah 2 hari kerja setelah berkas dinyatakan lengkap.
+
+2. SURAT IZIN PENELITIAN
+
+Mahasiswa yang membutuhkan surat izin penelitian harus mengajukan permohonan melalui bagian akademik.
+
+Persyaratan:
+- Mengisi formulir permohonan.
+- Menyertakan proposal penelitian.
+- Mendapat persetujuan dosen pembimbing.
+
+Waktu pemrosesan surat izin penelitian adalah 3 hari kerja setelah persyaratan lengkap.
+
+3. TRANSKRIP NILAI SEMENTARA
+
+Mahasiswa dapat meminta transkrip nilai sementara melalui layanan administrasi akademik.
+
+Persyaratan:
+- Mahasiswa terdaftar aktif.
+- Mengajukan permohonan kepada bagian akademik.
+
+Waktu pemrosesan transkrip nilai sementara adalah 1 hari kerja.
+
+4. JAM PELAYANAN AKADEMIK
+
+Pelayanan administrasi akademik tersedia pada hari Senin sampai Jumat.
+
+Jam pelayanan:
+08.00 sampai 15.00 WIB.
+
+Pelayanan tidak tersedia pada hari Sabtu, Minggu, dan hari libur nasional.
